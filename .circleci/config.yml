@@ -4,6 +4,9 @@ jobs:
     docker:
       - image: chef/chefdk:3.1.0
 
+    environment:
+      CIRCLE_WORKING_DIRECTORY: ~/project/test-cookbook
+
     steps:
       - checkout
 
