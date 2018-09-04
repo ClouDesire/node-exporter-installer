@@ -37,6 +37,10 @@ EOF
 
     systemctl enable node-exporter
     systemctl start node-exporter
+elif [ -x "$(command -v chckconfig)" ]; then
+    cat << EOF >> /etc/inittab
+::respawn:/opt/node_exporter/node_exporter
+EOF
 elif [ -x "$(command -v initctl)" ]; then
     cat << EOF > /etc/init/node-exporter.conf
 start on runlevel [23456]
