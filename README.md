@@ -5,5 +5,11 @@ Node Exporter on various platforms:
 
 * Ubuntu 16.04+
 * Debian 9
-* Centos 7
-* RHEL 7
+* Centos 6+
+* RHEL 6+
+
+## Usage
+
+```bash
+curl -sSL https://cloudesire.github.io/node-exporter-installer/install.sh | sh
+```

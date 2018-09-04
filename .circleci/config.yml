@@ -32,6 +32,16 @@ jobs:
 
       - run: cd test-cookbook && ./ci-conf/cookbooks/test.sh
 
+      - deploy:
+          name: Publish on gh-pages
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "publishing" ]; then
+              # push via http for token login
+              git remote add publish https://$GITHUB_TOKEN:x-oauth-basic@github.com/ClouDesire/node-exporter-installer.git
+              # https://stackoverflow.com/a/13403588/547195
+              git push publish `git subtree split --prefix bin master`:gh-pages --force
+            fi
+
       - store_artifacts:
           path: /tmp/foodcritic.log
           destination: foodcritic.log
