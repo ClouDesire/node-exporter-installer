@@ -1,16 +1,23 @@
 #!/bin/sh -e
 VERSION=0.16.0
 
-if [ -x "$(command -v apt-get)" ]; then
-    apt-get update
-    apt-get -y install wget
-elif [ -x "$(command -v yum)" ]; then
-    yum -y install wget
-else
-    echo "No known package manager found" >&2;
-    exit 1;
-fi
+_install_wget () {
+    if [ -x "$(command -v wget)" ]; then
+        return
+    fi
 
+    if [ -x "$(command -v apt-get)" ]; then
+        apt-get update
+        apt-get -y install wget
+    elif [ -x "$(command -v yum)" ]; then
+        yum -y install wget
+    else
+        echo "No known package manager found" >&2;
+        exit 1;
+    fi
+}
+
+_install_wget
 cd /tmp
 wget https://github.com/prometheus/node_exporter/releases/download/v${VERSION}/node_exporter-${VERSION}.linux-amd64.tar.gz
 tar xvfz node_exporter-${VERSION}.linux-amd64.tar.gz
@@ -50,7 +57,7 @@ respawn
 EOF
 
     initctl reload-configuration
-    initctl start node-exporter
+    stop node-exporter || true && start node-exporter
 else
     echo "No known service management found" >&2;
     exit 1;
