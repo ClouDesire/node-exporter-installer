@@ -1,6 +1,13 @@
 #!/bin/sh -e
 VERSION=0.16.0
 
+_check_root () {
+    if [ $(id -u) -ne 0 ]; then
+        echo "Please run as root" >&2;
+        exit 1;
+    fi
+}
+
 _install_wget () {
     if [ -x "$(command -v wget)" ]; then
         return
@@ -17,7 +24,9 @@ _install_wget () {
     fi
 }
 
+_check_root
 _install_wget
+
 cd /tmp
 wget https://github.com/prometheus/node_exporter/releases/download/v${VERSION}/node_exporter-${VERSION}.linux-amd64.tar.gz
 tar xvfz node_exporter-${VERSION}.linux-amd64.tar.gz
