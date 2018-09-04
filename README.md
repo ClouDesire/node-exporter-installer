@@ -1,4 +1,4 @@
-# node-exporter-install
+# node-exporter-installer
 
 Automatically download, unpack and configure for automatic startup of Prometheus
 Node Exporter on various platforms:
