@@ -1,1 +1,1 @@
-../../../node-exporter-install.sh
+../../../bin/install.sh
