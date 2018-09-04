@@ -35,7 +35,7 @@ jobs:
       - deploy:
           name: Publish on gh-pages
           command: |
-            if [ "${CIRCLE_BRANCH}" == "publishing" ]; then
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
               # push via http for token login
               git remote add publish https://$GITHUB_TOKEN:x-oauth-basic@github.com/ClouDesire/node-exporter-installer.git
               # https://stackoverflow.com/a/13403588/547195
