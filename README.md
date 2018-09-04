@@ -11,5 +11,5 @@ Node Exporter on various platforms:
 ## Usage
 
 ```bash
-curl -sSL https://cloudesire.github.io/node-exporter-installer/install.sh | sh
+curl -sSL https://cloudesire.github.io/node-exporter-installer/install.sh | sudo sh
 ```
