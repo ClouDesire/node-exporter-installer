@@ -12,18 +12,18 @@ platforms:
     driver_config:
       image_project: debian-cloud
       image_family: debian-9
-  #- name: centos-6
-  #  driver_config:
-  #    image_project: centos-cloud
-  #    image_family: centos-6
+  - name: centos-6
+    driver_config:
+      image_project: centos-cloud
+      image_family: centos-6
   - name: centos-7
     driver_config:
       image_project: centos-cloud
       image_family: centos-7
-  #- name: rhel-6
-  #  driver_config:
-  #    image_project: rhel-cloud
-  #    image_family: rhel-6
+  - name: rhel-6
+    driver_config:
+      image_project: rhel-cloud
+      image_family: rhel-6
   - name: rhel-7
     driver_config:
       image_project: rhel-cloud
