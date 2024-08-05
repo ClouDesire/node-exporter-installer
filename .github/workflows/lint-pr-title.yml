@@ -17,3 +17,19 @@ jobs:
       - uses: amannn/action-semantic-pull-request@v5.4.0
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_GH_TOKEN }}
+        with:
+          # Default: https://github.com/commitizen/conventional-commit-types
+          # https://github.com/amannn/action-semantic-pull-request?tab=readme-ov-file#configuration
+          types: |
+            fix
+            feat
+            chore
+            deps
+            docs
+            style
+            refactor
+            test
+            perf
+            build
+            ci
+            revert
